@@ -6,7 +6,17 @@ class ProjectInput {
         const importedData = document.importNode(this.templateEl.content, true);
         this.element = importedData.firstElementChild;
         this.element.id = "user-input";
+        this.titleInputEl = this.element.querySelector("#title");
+        this.descriptionInputEl = this.element.querySelector("#description");
+        this.peopleInputEl = this.element.querySelector("#people");
+        this.configure();
         this.attach();
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+    }
+    configure() {
+        this.element.addEventListener("submit", this.handleSubmit.bind(this));
     }
     attach() {
         this.hostEl.insertAdjacentElement("afterbegin", this.element);
